@@ -1,4 +1,4 @@
-# codex-exam-kit
+# codex_skills
 
 3시간 AI 활용 실무 과제(웹 IDE + Codex)용 지침과 스킬.
 흐름: **질문으로 요구사항 끌어내기 → SPEC 승인 → 덜어낸 계획 → 작은 단위 구현 · 검증 → 기록 · README**.
@@ -24,31 +24,31 @@ skills/context-recall/SKILL.md          압축 · 새 세션 뒤 SPEC · PLAN ·
 
 ## 설치 1: Codex 안에서 `$skill-installer`
 
-Codex 세션에서 (아래 `<owner>`를 이 저장소 주인으로):
+Codex 세션에서:
 
 ```
-$skill-installer install every skill under skills/ from https://github.com/<owner>/codex-exam-kit
+$skill-installer install every skill under skills/ from https://github.com/WherearetheAvoxados/codex_skills
 ```
 
 - 설치 위치는 `~/.codex/skills/<이름>/`. 다음 턴부터 쓸 수 있다. 같은 이름이 이미 있으면 설치가 멈추니 지우고 다시.
 - 설치기 스크립트를 직접 부를 때:
   ```bash
   S="requirements-interview impl-steps follow-plan finalize arch-diagram discuss discuss-with-research explain-cause context-recall"
-  python ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo <owner>/codex-exam-kit --path $(for s in $S; do printf 'skills/%s ' $s; done)
+  python ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo WherearetheAvoxados/codex_skills --path $(for s in $S; do printf 'skills/%s ' $s; done)
   ```
 - `/skills`에 안 보이면: 최신 Codex는 사용자 스킬을 `~/.agents/skills/`에서 찾는다. `mkdir -p ~/.agents/skills && for s in $S; do cp -R ~/.codex/skills/$s ~/.agents/skills/; done` 뒤 Codex 재시작.
 
 AGENTS.md는 설치기가 다루지 않으니 따로 둔다 (둘 중 하나):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/<owner>/codex-exam-kit/main/AGENTS.md -o AGENTS.md            # 과제 프로젝트 루트
-curl -fsSL https://raw.githubusercontent.com/<owner>/codex-exam-kit/main/AGENTS.md -o ~/.codex/AGENTS.md   # 모든 프로젝트
+curl -fsSL https://raw.githubusercontent.com/WherearetheAvoxados/codex_skills/main/AGENTS.md -o AGENTS.md            # 과제 프로젝트 루트
+curl -fsSL https://raw.githubusercontent.com/WherearetheAvoxados/codex_skills/main/AGENTS.md -o ~/.codex/AGENTS.md   # 모든 프로젝트
 ```
 
 ## 설치 2: 설치가 막혔을 때 (파일로 직접)
 
 ```bash
-git clone https://github.com/<owner>/codex-exam-kit /tmp/kit      # 또는 ZIP 받아 풀기
+git clone https://github.com/WherearetheAvoxados/codex_skills /tmp/kit      # 또는 ZIP 받아 풀기
 cp /tmp/kit/AGENTS.md ./AGENTS.md                                   # 과제 프로젝트 루트 (이미 있으면 내용을 뒤에 붙인다)
 mkdir -p .agents/skills && cp -R /tmp/kit/skills/* .agents/skills/  # Codex가 저장소 안 스킬로 자동 인식
 ```
