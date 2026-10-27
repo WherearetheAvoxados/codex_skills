@@ -89,4 +89,6 @@ $impl-steps SPEC.md 기준으로 PLAN.md 단계 표만 만들어줘.
 
 필요할 때만: 방향이 갈리면 `$discuss` (문서를 찾아봐야 하면 `$discuss-with-research`), 원인이나 결정을 이해 못 했으면 `$explain-cause`, 압축 · 새 세션 뒤엔 `$context-recall`.
 
+토큰 아끼기 (내 쪽): README나 긴 로그를 프롬프트에 통째로 붙여 넣지 말고 `README.md 읽고`처럼 경로만 준다. 한 프롬프트에 한 가지 일만.
+
 사후 서술형 대비: DECISIONS.md의 "이유 / 버린 대안"이 곧 답안 재료다. 끝나기 전에 한 번 소리 내어 읽어 본다.
