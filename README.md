@@ -1,15 +1,15 @@
 # codex_skills
 
 3시간 AI 활용 실무 과제(웹 IDE + Codex)용 지침과 스킬.
-흐름: **질문으로 요구사항 끌어내기 → SPEC 승인 → 덜어낸 계획 → 작은 단위 구현 · 검증 → 기록 · README**.
+흐름: **질문으로 요구사항 끌어내기 → SPEC 승인 → 덜어낸 계획 → 작은 단위 구현 · 검증 → 기록 · SOLUTION.md**. 과제 원문 README.md는 읽기만 한다.
 
 ```
-AGENTS.md                               항상 적용되는 규칙 (30줄 이내)
+AGENTS.md                               항상 적용되는 규칙 (40줄 이내)
 skills/requirements-interview/SKILL.md  담당자 질문 순서 → SPEC.md                         (자동 호출)
-skills/impl-steps/SKILL.md              SPEC에서 PLAN.md 단계 표 만들기 · 상태 갱신        (이하 수동 $이름 만)
+skills/impl-steps/SKILL.md              SPEC에서 PLAN.md 단계 표 만들기 · 상태 갱신, 같은 표를 docs/architecture.svg 오른쪽에        (이하 수동 $이름 만)
 skills/follow-plan/SKILL.md             PLAN 단계를 하나씩 끝까지 구현 · 검증 (땜질이면 멈추고 묻기)
-skills/finalize/SKILL.md                제출 전 마무리: 상태 점검 · SPEC 기준 점검 · DECISIONS 정리 · README
-skills/arch-diagram/SKILL.md            설계 구조도 (README mermaid, 필요하면 SVG)
+skills/finalize/SKILL.md                제출 전 마무리: 상태 점검 · SPEC 기준 점검 · DECISIONS 정리 · SOLUTION.md
+skills/arch-diagram/SKILL.md            설계 구조도 SVG (docs/architecture.svg 왼쪽)
 skills/discuss/SKILL.md                 파일 안 바꾸고 방향만 논의 (선택지 · 추천)
 skills/discuss-with-research/SKILL.md   문서 · 사례를 찾아보며 논의 (설치 · 내려받기 없음)
 skills/explain-cause/SKILL.md           원인 · 결정을 쉬운 말과 실제 예로 다시 설명 (서술형 대비)
@@ -85,10 +85,10 @@ $impl-steps SPEC.md 기준으로 PLAN.md 단계 표만 만들어줘.
 | 0:00–0:30 | README 읽기, 담당자 질문, SPEC.md 확정 | `$requirements-interview` |
 | 0:30–0:45 | 단계 표 · 구조도, 승인 | `$impl-steps`, `$arch-diagram` |
 | 0:45–2:30 | 단계마다 구현 → 실행 → 보고, 표 갱신 | `$follow-plan`, `$impl-steps` |
-| 2:30–3:00 | 상태 점검, 성공 기준 점검, DECISIONS 정리, README | `$finalize` |
+| 2:30–3:00 | 상태 점검, 성공 기준 점검, DECISIONS 정리, SOLUTION.md | `$finalize` |
 
 필요할 때만: 방향이 갈리면 `$discuss` (문서를 찾아봐야 하면 `$discuss-with-research`), 원인이나 결정을 이해 못 했으면 `$explain-cause`, 압축 · 새 세션 뒤엔 `$context-recall`.
 
 토큰 아끼기 (내 쪽): README나 긴 로그를 프롬프트에 통째로 붙여 넣지 말고 `README.md 읽고`처럼 경로만 준다. 한 프롬프트에 한 가지 일만.
 
-사후 서술형 대비: DECISIONS.md의 "이유 / 버린 대안"이 곧 답안 재료다. 끝나기 전에 한 번 소리 내어 읽어 본다.
+사후 서술형 대비: DECISIONS.md의 "이유 / 버린 대안 / 출처"가 곧 답안 재료다. 출처가 "AI 제안 수정 · 내 결정"인 줄이 내 판단의 근거이니, AI 제안을 고치거나 거절할 때마다 바로 한 줄 남긴다. 끝나기 전에 한 번 소리 내어 읽어 본다.

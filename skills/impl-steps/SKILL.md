@@ -1,6 +1,6 @@
 ---
 name: impl-steps
-description: PLAN.md의 구현 단계 표(단계 · 하위 단계 · 상태)를 새로 만들거나 진행에 맞춰 갱신할 때 쓴다. 단위를 하나 끝냈을 때, 계획이 바뀌었을 때, "단계 표 갱신", "표에 반영", "지금 진행 상태 표로"에 쓴다. 요청하면 docs/plan.svg로도 그린다. 구조 그림은 arch-diagram이 맡는다.
+description: PLAN.md의 구현 단계 표(단계 · 하위 단계 · 상태)를 새로 만들거나 진행에 맞춰 갱신하고, 같은 내용을 docs/architecture.svg 오른쪽에 그린다(왼쪽 구조도는 arch-diagram). 단위를 하나 끝냈을 때, 계획이 바뀌었을 때, "단계 표 갱신", "표에 반영", "지금 진행 상태 표로"에 쓴다.
 disable-model-invocation: true
 ---
 
@@ -27,20 +27,19 @@ disable-model-invocation: true
 - 결과 칸에는 실제로 본 숫자 · 출력 한 줄. 핵심 숫자가 있으면 단계 이름 뒤에도 붙인다 (예: "② 응답 0.3초 ✓").
 - 계획에 없던 일은 맨 아래 번호 "-"로. 요구사항에 없는 것은 "제안만"으로 두고 구현하지 않는다.
 
-## 2-1. SVG로도 (요청할 때만: docs/plan.svg)
-- 기준은 PLAN.md다. SVG는 그 표를 그림으로 옮긴 것이라 내용을 따로 만들지 않는다.
-- 너비 640, 줄 간격 30, 첫 줄 y=70. 높이 = 마지막 줄 y + 40 (`<svg width viewBox>`와 배경 rect 함께).
+## 2-1. 그림: docs/architecture.svg 오른쪽 (기본, 표를 고칠 때마다 함께)
+- 내가 눈으로 보며 작업하려고 그린다. 기준은 PLAN.md(검증 명령 · 결과 칸까지)이고, 그림은 그 표를 옮긴 것이라 내용을 따로 만들지 않는다.
+- 같은 파일 왼쪽은 구조도($arch-diagram). 파일이 없으면 arch-diagram의 틀로 먼저 만든다(왼쪽은 비워 두고 구조도를 그리자고 말한다).
+- `<!-- implementation steps -->` 주석 아래만 고친다. 제목 y=32, 첫 줄 y=70, 줄 간격 30.
 ```svg
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="H" viewBox="0 0 640 H" font-family="sans-serif">
-  <rect width="640" height="H" fill="#FFFFFF"/>
-  <text x="20" y="32" font-size="15" font-weight="600" fill="#2C2C2A">구현 단계 (MM-DD HH:MM 기준)</text>
+  <!-- implementation steps -->
+  <text x="760" y="32" font-size="14" font-weight="600" fill="#2C2C2A">구현 단계 (MM-DD HH:MM 기준)</text>
   <!-- 단계 한 줄 -->
-  <text x="20" y="Y" font-size="12" font-weight="600" fill="#2C2C2A">1</text>
-  <text x="50" y="Y" font-size="12" font-weight="600" fill="#2C2C2A">최소 동작: 화면까지</text>
-  <rect x="556" y="Y-14" width="66" height="20" rx="10" fill="F" stroke="S"/>
-  <text x="589" y="Y" font-size="11" text-anchor="middle" fill="T">완료</text>
-  <!-- 하위 단계: 번호 없이, 이름 x=50 · font-weight 없음 · fill #444441 -->
-</svg>
+  <text x="776" y="Y" font-size="12" font-weight="600" fill="#2C2C2A">1</text>
+  <text x="806" y="Y" font-size="12" font-weight="600" fill="#2C2C2A">최소 동작: 화면까지</text>
+  <rect x="1150" y="Y-14" width="66" height="20" rx="10" fill="F" stroke="S"/>
+  <text x="1183" y="Y" font-size="11" text-anchor="middle" fill="T">완료</text>
+  <!-- 하위 단계: 번호 없이, 이름 x=806 · font-weight 없음 · fill #444441 -->
 ```
 | 상태 | fill (F) | stroke (S) | 글자 (T) |
 |---|---|---|---|
@@ -48,17 +47,19 @@ disable-model-invocation: true
 | 진행 중 | #FAEEDA | #BA7517 | #633806 |
 | 다음 | #FFFFFF | #A32D2D | #A32D2D |
 | 미착수 · 보류 · 없앰 · 제안만 | #F1EFE8 | #888780 | #444441 |
-- 이름은 알약(x 556)에 닿지 않게 한 줄 30자 안팎. 검증 · 결과 칸은 그리지 않고 핵심 숫자만 이름 뒤에 붙인다.
-- 계획 밖 줄은 "계획 밖" 소제목(y를 한 줄 띄움) 아래 번호 "-"로.
+- 이름은 알약(x 1150)에 닿지 않게 한 줄 25자 안팎. 검증 · 결과 칸은 그리지 않고 핵심 숫자만 이름 뒤에 붙인다.
+- 계획 밖 줄은 "계획 밖" 소제목(한 줄 띄움) 아래 번호 "-"로.
+- 표가 왼쪽보다 길어지면 높이 H(= 큰 쪽 맨 아래 + 40)와 `<svg height viewBox>` · 배경 rect · 구분선을 함께 늘린다.
 
 ## 3. 고칠 때
 - 줄을 더하거나 빼도 번호가 꼬이지 않게 맞춘다.
 - 제목의 "기준" 시각을 지금으로 고친다.
-- docs/plan.svg가 있으면 같은 내용으로 함께 고친다. 줄을 더하거나 빼면 아래 줄 y를 모두 30씩 옮기고 높이를 늘린다(python으로 범위만).
+- docs/architecture.svg 오른쪽도 같은 내용으로 함께 고친다. 줄을 더하거나 빼면 그 아래 오른쪽 줄(x ≥ 760)의 y를 모두 30씩 옮긴다(python으로 그 구역만).
+- 그림의 알약 색이 PLAN.md 상태와 같아야 한다(✅ 완료 · 🟡 진행 중 · 🔴 다음 · ⚪ 나머지).
 - 구조도(arch-diagram)의 상태 색과 표의 상태가 어긋나면 함께 맞추자고 말한다.
-- 계획 자체가 바뀌었으면(단계 추가 · 삭제) DECISIONS.md에 `바꿈: X / 이유 / 버린 대안` 한 줄.
+- 계획 자체가 바뀌었으면(단계 추가 · 삭제) DECISIONS.md에 `바꿈: X / 이유 / 버린 대안 / 출처` 한 줄.
 
 ## 4. 확인
 - 표가 깨지지 않았는지(칸 수) 다시 읽는다.
-- SVG: `python -c "import xml.dom.minidom,sys; xml.dom.minidom.parse(sys.argv[1])" docs/plan.svg`. 그림으로 볼 수 있으면(웹 IDE 미리보기 등) 글자가 알약에 닿지 않는지 본다.
-- 바뀐 줄을 짧게 보고한다: 무엇이 ✅가 됐고, 무엇이 🔴 다음인지, 남은 시간에 들어가는지.
+- SVG: `python -c "import xml.dom.minidom,sys; xml.dom.minidom.parse(sys.argv[1])" docs/architecture.svg`. 넘침 어림: 한글 1자 ≈ 12px, 영문 · 숫자 ≈ 0.6배로 알약(x 1150)에 닿지 않는지.
+- 바뀐 줄을 짧게 보고한다: 무엇이 ✅가 됐고, 무엇이 🔴 다음인지, 남은 시간에 들어가는지. 끝에 "docs/architecture.svg를 열어 확인" 한 줄.
