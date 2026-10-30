@@ -15,11 +15,12 @@ skills/discuss/SKILL.md                 파일 안 바꾸고 방향만 논의 (�
 skills/discuss-with-research/SKILL.md   문서 · 사례를 찾아보며 논의 (설치 · 내려받기 없음)
 skills/explain-cause/SKILL.md           원인 · 결정을 쉬운 말과 실제 예로 다시 설명 (서술형 대비)
 skills/context-recall/SKILL.md          압축 · 새 세션 뒤 SPEC · PLAN · DECISIONS · git으로 상태 정리
+skills/ui-kit/                          화면 틀: base.css · report.html(보고서형) · tool.html(입력→결과형) · parts.html(견본) · reference.html(원본, 읽지 않음)
 ```
 
 스킬은 Agent Skills 형식(`SKILL.md` + `name` · `description` 머리말)이라 Codex와 Claude Code 모두 읽는다. hooks · MCP · 플러그인 · 외부 인증 없음.
 
-**자동 호출은 `requirements-interview` 하나뿐.** 나머지 8개는 `$이름`(Claude Code는 `/이름`)으로 직접 부를 때만 돈다.
+**자동 호출은 `requirements-interview` 하나뿐.** 나머지 9개는 `$이름`(Claude Code는 `/이름`)으로 직접 부를 때만 돈다.
 - Codex: 각 스킬의 `agents/openai.yaml`에 `policy.allow_implicit_invocation: false`
 - Claude Code: 각 SKILL.md 머리말에 `disable-model-invocation: true` (Codex는 모르는 칸을 무시한다)
 
@@ -31,11 +32,11 @@ skills/context-recall/SKILL.md          압축 · 새 세션 뒤 SPEC · PLAN ·
 $skill-installer WherearetheAvoxados/codex_skills의 skills 폴더 스킬을 모두 설치하고, 저장소의 AGENTS.md는 ~/.codex/AGENTS.md로 받아줘
 ```
 
-- 스킬 9개가 `~/.codex/skills/<이름>/`에 설치된다. 데이터 점검 스크립트는 requirements-interview 스킬 안(`scripts/profile_csv.py`)에 있어 함께 받아진다.
+- 스킬 10개가 `~/.codex/skills/<이름>/`에 설치된다. 데이터 점검 스크립트(requirements-interview 안 `scripts/profile_csv.py`)와 화면 틀(ui-kit 폴더)도 함께 받아진다.
 - AGENTS.md는 `~/.codex/AGENTS.md`(모든 프로젝트에 적용)로 받는다. **과제 프로젝트에는 아무 파일도 생기지 않는다** — 과제 README.md를 덮을 일도, 제출물에 키트가 섞일 일도 없다.
-- 확인: `ls ~/.codex/skills ~/.codex/AGENTS.md`, 그리고 Codex를 다시 켜서 `/skills`에 아홉 이름이 보이는지.
+- 확인: `ls ~/.codex/skills ~/.codex/AGENTS.md`, 그리고 Codex를 다시 켜서 `/skills`에 열 이름이 보이는지.
 - 같은 이름의 스킬이 이미 있으면 설치기가 멈춘다. 지우고 다시.
-- `/skills`에 안 보이면: 최신 Codex는 사용자 스킬을 `~/.agents/skills/`에서 찾는다. `mkdir -p ~/.agents/skills && cp -R ~/.codex/skills/{requirements-interview,impl-steps,follow-plan,finalize,arch-diagram,discuss,discuss-with-research,explain-cause,context-recall} ~/.agents/skills/` 뒤 Codex 재시작.
+- `/skills`에 안 보이면: 최신 Codex는 사용자 스킬을 `~/.agents/skills/`에서 찾는다. `mkdir -p ~/.agents/skills && cp -R ~/.codex/skills/{requirements-interview,impl-steps,follow-plan,finalize,arch-diagram,discuss,discuss-with-research,explain-cause,context-recall,ui-kit} ~/.agents/skills/` 뒤 Codex 재시작.
 
 **Codex가 이 저장소를 설치할 때 지킬 것** (위 요청을 받은 Codex가 이 README를 읽을 때를 위해)
 1. 스킬은 `$skill-installer`의 설치 스크립트로 `skills/<이름>` 경로만 설치한다 (`tools/` 같은 다른 폴더는 없다).
@@ -54,12 +55,18 @@ mkdir -p ~/.agents/skills && cp -R /tmp/kit/skills/* ~/.agents/skills/    # 사�
 - 스킬이 안 읽히면 경로로 직접 부른다: `/tmp/kit/skills/follow-plan/SKILL.md를 읽고 그 순서대로 해줘`.
 - 네트워크가 막혔으면 AGENTS.md와 꼭 필요한 스킬(requirements-interview · impl-steps · follow-plan)만 웹 IDE에 새 파일로 붙여 넣는다.
 
+## 화면 틀 쓰는 법 (ui-kit)
+
+1. 보고서형(표 · 요약 · 필터)은 `report.html`, 입력 → 결과형은 `tool.html`을 `base.css`와 함께 프로젝트 화면 폴더로 복사한다 (`$ui-kit`, 원본은 `~/.codex/skills/ui-kit/`).
+2. `<link rel="stylesheet" href="base.css">`는 그대로 두고 base.css 부품만 쓴다. 새 디자인 시스템 · 프레임워크 · 웹폰트 · CDN 없이.
+3. `<!-- 선택: SPEC에 없으면 지울 것 -->`이 붙은 부품은 SPEC에 없으면 지운다. 제출 때 SOLUTION.md에 "화면 기본 틀은 공개 키트에서 가져옴" 한 줄.
+
 ## 읽히는지 확인
 
 1. 지침: 프로젝트 루트에서
    `codex --ask-for-approval never "지금 불러온 지침 파일 경로와 규칙을 5줄로 요약해줘. 파일은 바꾸지 마."`
    → AGENTS.md 경로와 "SPEC 승인 전 구현 안 함", "DECISIONS.md 한 줄 기록"이 나오면 됨.
-2. 스킬: Codex에서 `/skills` 실행, 또는 `$`를 치면 아홉 이름이 목록에 보여야 함.
+2. 스킬: Codex에서 `/skills` 실행, 또는 `$`를 치면 열 이름이 목록에 보여야 함.
 
 ## 시험 프롬프트
 

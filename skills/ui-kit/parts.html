@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI 부품 견본</title>
+<link rel="stylesheet" href="base.css">
+</head>
+<body>
+<main class="page">
+
+<header class="topbar">
+  <div><h1 class="page-title">UI 부품 견본</h1><span class="sub">base.css 부품 · 참고용 (과제 화면은 report.html · tool.html에서 시작)</span></div>
+  <span class="count num">BASE.CSS V0.3</span>
+</header>
+
+<h2 class="section-title">기초</h2>
+<div class="parts-grid">
+  <div class="card wide">
+    <div class="card-head"><h3 class="section-title">색 견본</h3><code class="code">.swatch</code></div>
+    <div class="swatches">
+      <div class="swatch"><i style="background:var(--c-bg)"></i>c-bg · 배경</div>
+      <div class="swatch"><i style="background:var(--c-surface-1)"></i>c-surface-1 · 면 1</div>
+      <div class="swatch"><i style="background:var(--c-surface-2)"></i>c-surface-2 · 면 2</div>
+      <div class="swatch"><i style="background:var(--c-surface-3)"></i>c-surface-3 · 면 3</div>
+      <div class="swatch"><i style="background:var(--c-glass)"></i>c-glass · 카드</div>
+      <div class="swatch"><i style="background:var(--c-line)"></i>c-line · 구분선</div>
+      <div class="swatch"><i style="background:var(--c-title)"></i>c-title · 제목</div>
+      <div class="swatch"><i style="background:var(--c-text)"></i>c-text · 본문</div>
+      <div class="swatch"><i style="background:var(--c-text-sub)"></i>c-text-sub · 보조</div>
+      <div class="swatch"><i style="background:var(--c-brand-orange)"></i>c-brand-orange · 강조 · 주요 버튼</div>
+      <div class="swatch"><i style="background:var(--c-brand-red)"></i>c-brand-red · 브랜드 빨강</div>
+      <div class="swatch"><i style="background:var(--g-line)"></i>g-line · 위험 알림 띠 윗선 전용</div>
+      <div class="swatch"><i style="background:var(--c-crit)"></i>c-crit · 위험</div>
+      <div class="swatch"><i style="background:var(--c-warn)"></i>c-warn · 경고</div>
+      <div class="swatch"><i style="background:var(--c-ok)"></i>c-ok · 정상</div>
+      <div class="swatch"><i style="background:var(--c-info)"></i>c-info · 정보</div>
+      <div class="swatch"><i style="background:var(--c-none)"></i>c-none · 미분류</div>
+      <div class="swatch"><i style="background:var(--g-title)"></i>g-title · 요약 숫자</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">글자 크기</h3><code class="code">--fs-*</code></div>
+    <div>
+      <div class="type-row"><span class="num hint">26</span><span class="page-title">페이지 제목</span><code class="code">--fs-page</code></div>
+      <div class="type-row"><span class="num hint">17</span><span class="section-title">섹션 · 카드 제목</span><code class="code">--fs-section</code></div>
+      <div class="type-row"><span class="num hint">16</span><span>본문 기본 글자</span><code class="code">--fs-body</code></div>
+      <div class="type-row"><span class="num hint">15</span><span style="font-size:var(--fs-table)">표 셀 글자</span><code class="code">--fs-table</code></div>
+      <div class="type-row"><span class="num hint">14</span><span class="sub">보조 · 입력 라벨</span><code class="code">--fs-sm</code></div>
+      <div class="type-row"><span class="num hint">13</span><span class="hint">캡션 · 각주</span><code class="code">--fs-xs</code></div>
+      <div class="type-row"><span class="num hint">32</span><span class="stat-num">1,284.5</span><code class="code">--f-num</code></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">간격 · 모서리</h3><code class="code">--sp-* / --r-*</code></div>
+    <div class="stack">
+      <div class="space-row"><code class="code">--sp-1</code><span class="num">4</span><i style="width:12px"></i></div>
+      <div class="space-row"><code class="code">--sp-2</code><span class="num">8</span><i style="width:24px"></i></div>
+      <div class="space-row"><code class="code">--sp-3</code><span class="num">12</span><i style="width:36px"></i></div>
+      <div class="space-row"><code class="code">--sp-4</code><span class="num">16</span><i style="width:48px"></i></div>
+      <div class="space-row"><code class="code">--sp-5</code><span class="num">24</span><i style="width:72px"></i></div>
+      <div class="space-row"><code class="code">--sp-6</code><span class="num">32</span><i style="width:96px"></i></div>
+      <div class="space-row"><code class="code">--sp-7</code><span class="num">48</span><i style="width:144px"></i></div>
+    </div>
+    <div class="radius-row">
+      <span class="swatch"><i style="border-radius:4px"></i>--r-chip 4</span>
+      <span class="swatch"><i style="border-radius:8px"></i>--r-ctrl 8</span>
+      <span class="swatch"><i style="border-radius:12px"></i>--r-card 12</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">상태 배지</h3><code class="code">.badge.is-*</code></div>
+    <div class="stack">
+      <div class="card-head"><span class="badge is-crit">! CRIT 위험</span><span class="hint">즉시 조치 · 유일한 채움</span></div>
+      <div class="card-head"><span class="badge is-warn">▲ WARN 경고</span><span class="hint">주의 관찰</span></div>
+      <div class="card-head"><span class="badge is-ok">● OK 정상</span><span class="hint">기준 내</span></div>
+      <div class="card-head"><span class="badge is-info">i INFO 정보</span><span class="hint">참고</span></div>
+      <div class="card-head"><span class="badge is-none">– N/A 미분류</span><span class="hint">판정 전</span></div>
+    </div>
+    <span class="hint">주황은 상태로 쓰지 않는다. 기호 · 영문 · 한글을 함께 표시.</span>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">버튼 · 링크</h3><code class="code">.btn-*</code></div>
+    <div class="ai-actions"><button class="btn btn-primary" type="button">실행</button><button class="btn btn-outline" type="button">보조 동작</button><button class="btn btn-danger" type="button">삭제</button></div>
+    <div class="ai-actions"><button class="btn btn-primary btn-sm" type="button">작게</button><button class="btn btn-outline btn-sm" type="button">작게</button><button class="btn btn-primary btn-sm" type="button" disabled>비활성</button></div>
+    <span class="hint">높이 40 / 32 · 모서리 8 · 주요 버튼은 단색 주황 + 검은 글자 · 빨강은 삭제에만</span>
+    <p>본문 속 <a href="#">링크 문구</a>는 주황 밑줄.</p>
+    <a class="link-more" href="#">자세히 보기 →</a>
+  </div>
+</div>
+
+<details class="disclosure panel">
+  <summary>:root 변수 · 밝은 테마 값 <span class="hint">밝은 테마는 &lt;html data-theme="light"&gt;</span></summary>
+  <div class="table-wrap">
+    <table class="table">
+      <thead><tr><th>변수</th><th>용도</th><th>DARK</th><th>LIGHT</th></tr></thead>
+      <tbody>
+        <tr><td class="name">--c-bg</td><td>페이지 배경</td><td>#070709</td><td>#F6F6F7</td></tr>
+        <tr><td class="name">--c-surface-1 / 2 / 3</td><td>면 1 · 표 · 입력 / 면 2 · 알림 띠 / 면 3 · 표 머리 · 말풍선</td><td>#0F0F10 / #121213 / #181819</td><td>#FFFFFF / #F1F1F3 / #E9E9EC</td></tr>
+        <tr><td class="name">--c-glass</td><td>카드 배경</td><td class="wrap">135deg, rgba(255,255,255,.06) → rgba(74,74,74,.06)</td><td class="wrap">135deg, rgba(255,255,255,.9) → rgba(240,240,242,.9)</td></tr>
+        <tr><td class="name">--c-line / -strong</td><td>구분선 / 입력 테두리</td><td>rgba(255,255,255,.1) / .18</td><td>rgba(0,0,0,.1) / .2</td></tr>
+        <tr><td class="name">--c-title / -text / -text-sub</td><td>제목 / 본문 / 보조 글자</td><td>#FFFFFF / rgba(255,255,255,.7) / #9F9F9F</td><td>#0B0B0D / rgba(0,0,0,.72) / #5E5E63</td></tr>
+        <tr><td class="name">--c-brand-orange / -red</td><td>강조 · 링크 / 브랜드 빨강</td><td>#FF8E20 / #FF2750</td><td>#B25200 / #D9002F</td></tr>
+        <tr><td class="name">--g-title / --g-line</td><td>요약 숫자 / 위험 알림 띠 윗선</td><td class="wrap">#FFFFFF → #FF8E20 / #FF0030 → #FF8E20</td><td class="wrap">#0B0B0D → #B25200 / #FF0030 → #FF8E20</td></tr>
+        <tr><td class="name">--c-crit / -ink / -bg</td><td>위험</td><td>#FF2750 / #070709 / rgba(255,39,80,.12)</td><td>#D9002F / #FFFFFF / rgba(217,0,47,.1)</td></tr>
+        <tr><td class="name">--c-warn / -bg</td><td>경고</td><td>#F5C400 / rgba(245,196,0,.1)</td><td>#7A5E00 / rgba(245,196,0,.18)</td></tr>
+        <tr><td class="name">--c-ok / -bg</td><td>정상</td><td>#2BD67B / rgba(43,214,123,.1)</td><td>#0C7A41 / rgba(43,214,123,.14)</td></tr>
+        <tr><td class="name">--c-info / -bg</td><td>정보</td><td>#4DA3FF / rgba(77,163,255,.1)</td><td>#1A62C2 / rgba(77,163,255,.14)</td></tr>
+        <tr><td class="name">--c-none / -bg</td><td>미분류</td><td>#A8A8AC / rgba(255,255,255,.06)</td><td>#5E5E63 / rgba(0,0,0,.05)</td></tr>
+        <tr><td class="name">--f-body / --f-num</td><td>본문 / 숫자 · 라벨 글꼴 (시스템 글꼴)</td><td colspan="2" class="wrap">Pretendard, Apple SD Gothic Neo, Malgun Gothic, Noto Sans KR / Oswald, DIN Condensed, Arial Narrow</td></tr>
+        <tr><td class="name">--fs-* · --sp-* · --r-* · --h-ctrl</td><td>글자 크기 · 간격 · 모서리 · 높이</td><td colspan="2" class="wrap">13 · 14 · 15 · 16 · 17 · 26 · 32 / 4 · 8 · 12 · 16 · 24 · 32 · 48 / 4 · 8 · 12 / 40px</td></tr>
+      </tbody>
+    </table>
+  </div>
+</details>
+
+<h2 class="section-title">상태 · 피드백</h2>
+<div class="parts-grid">
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">빈 화면</h3><code class="code">.state.is-empty</code></div>
+    <div class="state is-empty"><span class="state-num">0</span><span class="state-title">표시할 결과가 없습니다</span><span class="state-sub">조건을 바꾸거나 파일을 선택하세요</span></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">로딩</h3><code class="code">.state.is-loading</code></div>
+    <div class="state is-loading">
+      <div class="state-head"><span class="state-title">불러오는 중</span><span class="num">64%</span></div>
+      <div class="progress"><span style="width:64%"></span></div>
+      <div class="progress is-indeterminate"><span></span></div>
+      <span class="hint">위: 진행률 · 아래: 진행률 모를 때</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">오류</h3><code class="code">.state.is-error</code></div>
+    <div class="state is-error">
+      <span class="badge is-crit">! ERROR 오류</span>
+      <span class="state-title">결과를 불러오지 못했습니다</span>
+      <span class="state-sub">오류 코드 <span class="num">E-000</span> · 잠시 후 다시 시도하세요</span>
+      <button class="btn btn-outline btn-sm" type="button">다시 시도</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">토스트 알림</h3><code class="code">.toast</code></div>
+    <div role="status" class="toast"><span class="toast-icon is-ok">✓</span><span class="toast-text"><b>저장했습니다</b><span>결과 3건 · 07:02</span></span><button class="toast-close" type="button" aria-label="닫기">×</button></div>
+    <div role="status" class="toast"><span class="toast-icon is-info">i</span><span class="toast-text"><b>새 데이터가 있습니다</b><span>새로고침하면 반영됩니다</span></span><button class="toast-close" type="button" aria-label="닫기">×</button></div>
+    <div role="status" class="toast"><span class="toast-icon is-crit">!</span><span class="toast-text"><b>내보내기 실패</b><span>파일 형식을 확인하세요</span></span><button class="toast-close" type="button" aria-label="닫기">×</button></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">확인 대화상자</h3><code class="code">.dialog</code></div>
+    <div class="dialog-demo">
+      <dialog class="dialog" open>
+        <form method="dialog">
+          <h4 class="section-title">항목을 삭제할까요?</h4>
+          <p>선택한 3건이 삭제되며 되돌릴 수 없습니다.</p>
+          <menu><button class="btn btn-outline btn-sm" value="cancel">취소</button><button class="btn btn-danger btn-sm" value="delete">삭제</button></menu>
+        </form>
+      </dialog>
+    </div>
+    <span class="hint">실제 화면: &lt;dialog id="d" class="dialog"&gt; + <code class="code">d.showModal()</code></span>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">탭 · 세그먼트 · 페이지</h3><code class="code">.tabs · .seg · .pager</code></div>
+    <div class="stack">
+      <div role="tablist" class="tabs"><button role="tab" aria-selected="true" type="button">개요</button><button role="tab" aria-selected="false" type="button">상세</button><button role="tab" aria-selected="false" type="button">기록</button></div>
+      <div class="seg"><button aria-pressed="false" type="button">일</button><button aria-pressed="true" type="button">주</button><button aria-pressed="false" type="button">월</button></div>
+      <nav class="pager" aria-label="페이지"><button type="button">‹</button><button type="button">1</button><button type="button" aria-current="page">2</button><button type="button">3</button><button type="button">…</button><button type="button">12</button><button type="button">›</button></nav>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">키-값 목록</h3><code class="code">.kv</code></div>
+    <dl class="kv">
+      <dt>상태</dt><dd><span class="badge is-ok">● OK 정상</span></dd>
+      <dt>대상</dt><dd>대상 03</dd>
+      <dt>기준 시각</dt><dd><span class="num">2026.10.30 07:00</span></dd>
+      <dt>측정값</dt><dd><span class="num">12.48</span></dd>
+      <dt>담당</dt><dd>담당자 자리</dd>
+      <dt>비고</dt><dd>메모 자리</dd>
+    </dl>
+  </div>
+  <div class="card wide">
+    <div class="card-head"><h3 class="section-title">접고 펴는 항목</h3><code class="code">.disclosure</code></div>
+    <div>
+      <details class="disclosure" open><summary>펼치는 항목 제목 자리 1</summary><div>펼친 본문 자리입니다. 두세 문장으로 설명하고 필요하면 링크를 덧붙입니다.</div></details>
+      <details class="disclosure"><summary>펼치는 항목 제목 자리 2</summary><div>펼친 본문 자리입니다. 계산 방식이나 제외 조건을 간단히 적습니다.</div></details>
+      <details class="disclosure"><summary>펼치는 항목 제목 자리 3</summary><div>펼친 본문 자리입니다. 담당 부서나 문의 채널을 적습니다.</div></details>
+    </div>
+  </div>
+</div>
+
+</main>
+</body>
+</html>

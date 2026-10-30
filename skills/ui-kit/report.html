@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>보고서 제목 자리</title>
+<link rel="stylesheet" href="base.css">
+</head>
+<body>
+<main class="page">
+
+<header class="topbar">
+  <div>
+    <h1 class="page-title">보고서 제목 자리</h1>
+    <span class="sub">부제 자리 · 대상 12 · 최근 1일</span>
+  </div>
+  <div class="actions">
+    <div class="asof"><span class="num">AS OF</span><span class="num">2026.10.30 07:00</span></div>
+    <!-- 선택: SPEC에 없으면 지울 것 (새로고침 · 내보내기) -->
+    <button class="btn btn-outline" type="button">새로고침</button>
+    <button class="btn btn-primary" type="button">내보내기</button>
+  </div>
+</header>
+
+<section class="alert-strip" aria-label="위험 알림">
+  <div class="alert-row"><span class="badge is-crit">! CRIT 위험</span><span class="name">대상 01</span><span class="time num">06:42</span><span>내용 자리 — 기준을 연속으로 벗어났습니다.</span><span class="value num">+18.4%</span></div>
+  <div class="alert-row"><span class="badge is-crit">! CRIT 위험</span><span class="name">대상 07</span><span class="time num">05:15</span><span>내용 자리 — 데이터가 들어오지 않습니다.</span><span class="value num">0 / 120</span></div>
+</section>
+
+<div class="stat-grid">
+  <div class="stat-card"><span class="stat-label">지표 A</span><span class="stat-num">128</span><span class="stat-note">전일 대비 +12</span></div>
+  <div class="stat-card"><span class="stat-label">지표 B</span><span class="stat-num">96.2%</span><span class="stat-note">기준 95% 이상</span></div>
+  <div class="stat-card"><span class="stat-label">지표 C</span><span class="stat-num">12</span><span class="stat-note">설명 자리</span></div>
+  <div class="stat-card"><span class="stat-label">지표 D</span><span class="stat-num">3</span><span class="stat-note">위험 2 · 경고 1</span></div>
+</div>
+
+<div class="split">
+  <!-- 선택: SPEC에 없으면 지울 것 (필터 패널 전체; 지우면 .split 대신 표만 남긴다) -->
+  <aside class="filter-panel">
+    <h3 class="section-title">필터</h3>
+    <label class="field"><span class="field-label">검색</span><input type="text" placeholder="대상 또는 항목"></label>
+    <label class="field"><span class="field-label">구분</span><span class="select"><select><option>전체</option><option>항목 A</option><option>항목 B</option><option>항목 C</option></select></span></label>
+    <fieldset class="checks">
+      <legend>상태</legend>
+      <label><input type="checkbox" checked>위험</label>
+      <label><input type="checkbox" checked>경고</label>
+      <label><input type="checkbox" checked>정상</label>
+      <label><input type="checkbox">정보</label>
+      <label><input type="checkbox">미분류</label>
+    </fieldset>
+    <div class="form-actions"><button class="btn btn-primary btn-sm" type="button">적용</button><a href="#">초기화</a></div>
+  </aside>
+
+  <div class="panel">
+    <div class="panel-head">
+      <div><h3 class="section-title">결과 목록</h3><span class="count num">12건 중 8건</span></div>
+      <span class="hint">정렬 · 변화 큰 순</span>
+    </div>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>NO</th><th>대상</th><th>구분</th><th>상태</th><th class="num">값</th><th class="num">기준</th><th class="num">변화</th><th class="num">건수</th></tr></thead>
+        <tbody>
+          <tr><td class="no">01</td><td class="name">대상 01</td><td>항목 A</td><td><span class="badge is-crit">! CRIT 위험</span></td><td class="num">14.80</td><td class="num is-sub">12.50</td><td class="num">+18.4%</td><td class="num">3</td></tr>
+          <tr><td class="no">02</td><td class="name">대상 02</td><td>항목 A</td><td><span class="badge is-ok">● OK 정상</span></td><td class="num">12.61</td><td class="num is-sub">12.50</td><td class="num">+0.9%</td><td class="num">12</td></tr>
+          <tr><td class="no">03</td><td class="name">대상 03</td><td>항목 A</td><td><span class="badge is-ok">● OK 정상</span></td><td class="num">12.48</td><td class="num is-sub">12.50</td><td class="num">-0.2%</td><td class="num">12</td></tr>
+          <tr><td class="no">04</td><td class="name">대상 04</td><td>항목 B</td><td><span class="badge is-info">i INFO 정보</span></td><td class="num">0.832</td><td class="num is-sub">0.800</td><td class="num">+4.0%</td><td class="num">24</td></tr>
+          <tr><td class="no">05</td><td class="name">대상 05</td><td>항목 B</td><td><span class="badge is-none">– N/A 미분류</span></td><td class="num">—</td><td class="num is-sub">0.800</td><td class="num">—</td><td class="num">0</td></tr>
+          <tr><td class="no">06</td><td class="name">대상 07</td><td>항목 C</td><td><span class="badge is-crit">! CRIT 위험</span></td><td class="num">0</td><td class="num is-sub">120</td><td class="num">-100%</td><td class="num">0</td></tr>
+          <tr><td class="no">07</td><td class="name">대상 11</td><td>항목 B</td><td><span class="badge is-warn">▲ WARN 경고</span></td><td class="num">0.871</td><td class="num is-sub">0.800</td><td class="num">+8.9%</td><td class="num">24</td></tr>
+          <tr><td class="no">08</td><td class="name">대상 12</td><td>항목 D</td><td><span class="badge is-ok">● OK 정상</span></td><td class="num">3.098</td><td class="num is-sub">3.100</td><td class="num">-0.1%</td><td class="num">8</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<footer class="footnote">
+  <span><span class="num">*1</span> 제외한 항목 4건</span>
+  <span><span class="num">*2</span> 기준값 산정 방식 메모 자리</span>
+  <span><span class="num">*3</span> 원본: <a href="#">자료 링크</a></span>
+  <span class="stamp num">GENERATED 2026.10.30 07:00</span>
+</footer>
+
+</main>
+</body>
+</html>
