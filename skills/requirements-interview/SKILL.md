@@ -13,7 +13,7 @@ description: README 요청이 몇 줄뿐이거나 요구사항이 불명확할 �
 
 ## 1. 먼저 읽기 (짧게)
 - README(과제 원문, 읽기만), 코드 폴더 구조(파일 목록)를 훑는다.
-- **데이터가 있으면 가장 먼저** `python3 tools/profile_csv.py data/*`를 실행한다 (파일 경로는 과제에 맞게).
+- **데이터가 있으면 가장 먼저** 이 스킬 폴더의 `scripts/profile_csv.py`를 실행한다: `python3 <이 스킬 폴더>/scripts/profile_csv.py data/*` (보통 `~/.codex/skills/requirements-interview/` 또는 `~/.agents/skills/requirements-interview/`; 데이터 경로는 과제에 맞게). 프로젝트로 복사하지 않는다.
   파일마다 행 수 · 열, 열별 빈 값 · 고유값(앞뒤 공백 · 대소문자가 보이게 따옴표로), 표기 변형 묶음, 시간 형식 종류 · 정렬(처음 역행하는 행), 완전 중복 행을 30줄 안팎으로 보여 준다.
 - `지원 안 함: 파일명`이 나오면(엑셀 등) 그 파일은 같은 항목 — **형식 종류 · 빈 값 · 정렬 · 중복 · 예외 값** — 을 직접 확인한다. 텍스트 파일이면 아래 명령으로(CSV 예, N은 열 번호):
   ```bash

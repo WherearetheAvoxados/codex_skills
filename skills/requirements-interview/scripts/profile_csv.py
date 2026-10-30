@@ -1,4 +1,4 @@
-"""데이터 파일 모양과 예외를 짧게 본다 (표준 라이브러리만). 사용: python3 tools/profile_csv.py data/*
+"""데이터 파일 모양과 예외를 짧게 본다 (표준 라이브러리만). 사용: python3 <requirements-interview 스킬 폴더>/scripts/profile_csv.py data/*
 지원: .csv .tsv .json(객체 배열) .jsonl — 파일마다 행 수 · 열, 열별 빈 값 · 고유값, 표기 변형, 시간 형식 · 정렬, 완전 중복 행."""
 import csv, json, re, sys
 from collections import Counter
@@ -70,7 +70,7 @@ def profile(p):
     return out
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2: sys.exit('사용: python3 tools/profile_csv.py data/*')
+    if len(sys.argv) < 2: sys.exit('사용: python3 <requirements-interview 스킬 폴더>/scripts/profile_csv.py data/*')
     for a in sys.argv[1:]:
         p = Path(a)
         if p.is_file(): print('\n'.join(profile(p)), end='\n\n')
