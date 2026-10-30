@@ -5,6 +5,7 @@
 
 ```
 AGENTS.md                               항상 적용되는 규칙 (40줄 이내)
+tools/profile_csv.py                    데이터 점검: 빈 값 · 고유값 · 표기 변형 · 시간 형식 · 정렬 · 중복 (표준 라이브러리만)
 skills/requirements-interview/SKILL.md  담당자 질문 순서 → SPEC.md                         (자동 호출)
 skills/impl-steps/SKILL.md              SPEC에서 PLAN.md 단계 표 만들기 · 상태 갱신, 같은 표를 docs/architecture.svg 오른쪽에        (이하 수동 $이름 만)
 skills/follow-plan/SKILL.md             PLAN 단계를 하나씩 끝까지 구현 · 검증 (땜질이면 멈추고 묻기)
@@ -24,11 +25,13 @@ skills/context-recall/SKILL.md          압축 · 새 세션 뒤 SPEC · PLAN ·
 
 ## 설치 1: Codex 안에서 `$skill-installer`
 
-Codex 세션에서:
+Codex 세션에서 (과제 프로젝트 루트에서, 한 줄):
 
 ```
-$skill-installer install every skill under skills/ from https://github.com/WherearetheAvoxados/codex_skills
+$skill-installer install every skill under skills/ from https://github.com/WherearetheAvoxados/codex_skills, then in the project root run: curl -fsSL https://raw.githubusercontent.com/WherearetheAvoxados/codex_skills/main/AGENTS.md >> AGENTS.md && mkdir -p tools && curl -fsSL https://raw.githubusercontent.com/WherearetheAvoxados/codex_skills/main/tools/profile_csv.py -o tools/profile_csv.py
 ```
+- `$skill-installer`는 skills/만 설치한다. 뒤의 curl이 AGENTS.md(이미 있으면 뒤에 붙임)와 tools/를 프로젝트 루트에 받는다.
+- 확인: `ls AGENTS.md tools/profile_csv.py` 그리고 `python3 tools/profile_csv.py data/*`(데이터 경로는 과제에 맞게).
 
 - 설치 위치는 `~/.codex/skills/<이름>/`. 다음 턴부터 쓸 수 있다. 같은 이름이 이미 있으면 설치가 멈추니 지우고 다시.
 - 설치기 스크립트를 직접 부를 때:
@@ -38,10 +41,9 @@ $skill-installer install every skill under skills/ from https://github.com/Where
   ```
 - `/skills`에 안 보이면: 최신 Codex는 사용자 스킬을 `~/.agents/skills/`에서 찾는다. `mkdir -p ~/.agents/skills && for s in $S; do cp -R ~/.codex/skills/$s ~/.agents/skills/; done` 뒤 Codex 재시작.
 
-AGENTS.md는 설치기가 다루지 않으니 따로 둔다 (둘 중 하나):
+AGENTS.md를 모든 프로젝트에 두고 싶을 때만 (한 줄 명령 대신, 또는 함께):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/WherearetheAvoxados/codex_skills/main/AGENTS.md -o AGENTS.md            # 과제 프로젝트 루트
 curl -fsSL https://raw.githubusercontent.com/WherearetheAvoxados/codex_skills/main/AGENTS.md -o ~/.codex/AGENTS.md   # 모든 프로젝트
 ```
 
@@ -51,11 +53,13 @@ curl -fsSL https://raw.githubusercontent.com/WherearetheAvoxados/codex_skills/ma
 git clone https://github.com/WherearetheAvoxados/codex_skills /tmp/kit      # 또는 ZIP 받아 풀기
 cp /tmp/kit/AGENTS.md ./AGENTS.md                                   # 과제 프로젝트 루트 (이미 있으면 내용을 뒤에 붙인다)
 mkdir -p .agents/skills && cp -R /tmp/kit/skills/* .agents/skills/  # Codex가 저장소 안 스킬로 자동 인식
+cp -R /tmp/kit/tools ./tools                                        # 데이터 점검 도구
 ```
 
 - `.agents/skills`도 안 먹히면 경로로 직접 부른다: `skills/follow-plan/SKILL.md를 읽고 그 순서대로 해줘`.
 - 네트워크가 막혔으면 AGENTS.md와 꼭 필요한 스킬(requirements-interview · impl-steps · follow-plan)만 웹 IDE에 새 파일로 붙여 넣는다.
 - 과제 제출물에 이 키트 파일이 섞이지 않게 `/tmp/kit`처럼 프로젝트 밖에 받는다.
+- tools/는 프로젝트 안에 두지만 과제 결과물이 아니다. 제출 전 지우거나, 남기면 SOLUTION.md에 "tools/profile_csv.py는 키트에서 가져온 점검 도구" 한 줄($finalize가 넣는다).
 
 ## 읽히는지 확인
 
