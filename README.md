@@ -82,13 +82,21 @@ $impl-steps SPEC.md 기준으로 PLAN.md 단계 표만 만들어줘.
 
 수동 전용 확인: `이거 구현하지 말고 방향만 얘기해 보자`처럼 `$` 없이 말했을 때 discuss가 저절로 불리지 않아야 한다 (AGENTS.md 규칙으로만 답함).
 
+## 두 세션으로 쓰는 법 (Codex 응답이 느릴 때)
+
+1. 터미널(Codex 세션)을 두 개 연다.
+2. 각 세션 첫 프롬프트에 역할을 정한다: "이 세션은 확정 세션이야" / "이 세션은 구현 세션이야".
+3. 확정 세션은 담당자 인터뷰 · SPEC.md · PLAN.md · docs/architecture.svg(`$requirements-interview`, `$impl-steps 갱신`, `$arch-diagram`), 구현 세션은 코드와 검증(`$follow-plan`).
+4. 소통은 파일로만: SPEC.md(확정 → 구현, 구현 세션은 단위마다 다시 읽음)와 notes/progress.md(구현 → 확정, 맨 아래에 추가만).
+5. 마무리는 두 세션을 멈춘 뒤 한쪽에서만 `$finalize`.
+
 ## 쓰는 순서 (시험 당일)
 
 | 시간 | 할 일 | 스킬 |
 |---|---|---|
 | 0:00–0:30 | README 읽기, 담당자 질문, SPEC.md 확정 | `$requirements-interview` |
-| 0:30–0:45 | 단계 표 · 구조도, 승인 | `$impl-steps`, `$arch-diagram` |
-| 0:45–2:30 | 단계마다 구현 → 실행 → 보고, 표 갱신 | `$follow-plan`, `$impl-steps` |
+| 0:30–0:45 | 단계 표 · 구조도, 승인("진행" 한 번) | `$impl-steps`, `$arch-diagram` |
+| 0:45–2:30 | 단계마다 구현 → 실행 → 3줄 보고 → 다음 단계 (멈춤 조건일 때만 멈춤), 표 갱신 | `$follow-plan`, `$impl-steps` |
 | 2:30–3:00 | 상태 점검, 성공 기준 점검, DECISIONS 정리, SOLUTION.md | `$finalize` |
 
 필요할 때만: 방향이 갈리면 `$discuss` (문서를 찾아봐야 하면 `$discuss-with-research`), 원인이나 결정을 이해 못 했으면 `$explain-cause`, 압축 · 새 세션 뒤엔 `$context-recall`.
