@@ -4,11 +4,12 @@
 흐름: **질문으로 요구사항 끌어내기 → SPEC 승인 → 덜어낸 계획 → 작은 단위 구현 · 검증 → 기록 · SOLUTION.md**. 과제 원문 README.md는 읽기만 한다.
 
 ```
-AGENTS.md                               항상 적용되는 규칙 (40줄 이내)
+AGENTS.md                               항상 적용되는 규칙 (45줄 이내)
 skills/requirements-interview/SKILL.md  담당자 질문 순서 → SPEC.md                         (자동 호출)
   └ scripts/profile_csv.py               데이터 점검: 빈 값 · 고유값 · 표기 변형 · 시간 형식 · 정렬 · 중복 (표준 라이브러리만)
 skills/impl-steps/SKILL.md              SPEC에서 PLAN.md 단계 표 만들기 · 상태 갱신, 같은 표를 docs/architecture.svg 오른쪽에        (이하 수동 $이름 만)
 skills/follow-plan/SKILL.md             PLAN 단계를 하나씩 끝까지 구현 · 검증 (땜질이면 멈추고 묻기)
+skills/optimize-loop/SKILL.md           엔진 세션: 평가 스크립트 → 단순 기준안 → 한 번에 하나씩 개선 (위반 0 · 우선순위 비교)
 skills/finalize/SKILL.md                제출 전 마무리: 상태 점검 · SPEC 기준 점검 · DECISIONS 정리 · SOLUTION.md
 skills/arch-diagram/SKILL.md            설계 구조도 SVG (docs/architecture.svg 왼쪽)
 skills/discuss/SKILL.md                 파일 안 바꾸고 방향만 논의 (선택지 · 추천)
@@ -20,7 +21,7 @@ skills/ui-kit/                          화면 틀: base.css · report.html(보�
 
 스킬은 Agent Skills 형식(`SKILL.md` + `name` · `description` 머리말)이라 Codex와 Claude Code 모두 읽는다. hooks · MCP · 플러그인 · 외부 인증 없음.
 
-**자동 호출은 `requirements-interview` 하나뿐.** 나머지 9개는 `$이름`(Claude Code는 `/이름`)으로 직접 부를 때만 돈다.
+**자동 호출은 `requirements-interview` 하나뿐.** 나머지 10개는 `$이름`(Claude Code는 `/이름`)으로 직접 부를 때만 돈다.
 - Codex: 각 스킬의 `agents/openai.yaml`에 `policy.allow_implicit_invocation: false`
 - Claude Code: 각 SKILL.md 머리말에 `disable-model-invocation: true` (Codex는 모르는 칸을 무시한다)
 
@@ -32,11 +33,11 @@ skills/ui-kit/                          화면 틀: base.css · report.html(보�
 $skill-installer WherearetheAvoxados/codex_skills의 skills 폴더 스킬을 모두 설치하고, 저장소의 AGENTS.md는 ~/.codex/AGENTS.md로 받아줘
 ```
 
-- 스킬 10개가 `~/.codex/skills/<이름>/`에 설치된다. 데이터 점검 스크립트(requirements-interview 안 `scripts/profile_csv.py`)와 화면 틀(ui-kit 폴더)도 함께 받아진다.
+- 스킬 11개가 `~/.codex/skills/<이름>/`에 설치된다. 데이터 점검 스크립트(requirements-interview 안 `scripts/profile_csv.py`)와 화면 틀(ui-kit 폴더)도 함께 받아진다.
 - AGENTS.md는 `~/.codex/AGENTS.md`(모든 프로젝트에 적용)로 받는다. **과제 프로젝트에는 아무 파일도 생기지 않는다** — 과제 README.md를 덮을 일도, 제출물에 키트가 섞일 일도 없다.
-- 확인: `ls ~/.codex/skills ~/.codex/AGENTS.md`, 그리고 Codex를 다시 켜서 `/skills`에 열 이름이 보이는지.
+- 확인: `ls ~/.codex/skills ~/.codex/AGENTS.md`, 그리고 Codex를 다시 켜서 `/skills`에 열한 이름이 보이는지.
 - 같은 이름의 스킬이 이미 있으면 설치기가 멈춘다. 지우고 다시.
-- `/skills`에 안 보이면: 최신 Codex는 사용자 스킬을 `~/.agents/skills/`에서 찾는다. `mkdir -p ~/.agents/skills && cp -R ~/.codex/skills/{requirements-interview,impl-steps,follow-plan,finalize,arch-diagram,discuss,discuss-with-research,explain-cause,context-recall,ui-kit} ~/.agents/skills/` 뒤 Codex 재시작.
+- `/skills`에 안 보이면: 최신 Codex는 사용자 스킬을 `~/.agents/skills/`에서 찾는다. `mkdir -p ~/.agents/skills && cp -R ~/.codex/skills/{requirements-interview,impl-steps,follow-plan,optimize-loop,finalize,arch-diagram,discuss,discuss-with-research,explain-cause,context-recall,ui-kit} ~/.agents/skills/` 뒤 Codex 재시작.
 
 **Codex가 이 저장소를 설치할 때 지킬 것** (위 요청을 받은 Codex가 이 README를 읽을 때를 위해)
 1. 스킬은 `$skill-installer`의 설치 스크립트로 `skills/<이름>` 경로만 설치한다 (`tools/` 같은 다른 폴더는 없다).
@@ -66,7 +67,7 @@ mkdir -p ~/.agents/skills && cp -R /tmp/kit/skills/* ~/.agents/skills/    # 사�
 1. 지침: 프로젝트 루트에서
    `codex --ask-for-approval never "지금 불러온 지침 파일 경로와 규칙을 5줄로 요약해줘. 파일은 바꾸지 마."`
    → AGENTS.md 경로와 "SPEC 승인 전 구현 안 함", "DECISIONS.md 한 줄 기록"이 나오면 됨.
-2. 스킬: Codex에서 `/skills` 실행, 또는 `$`를 치면 열 이름이 목록에 보여야 함.
+2. 스킬: Codex에서 `/skills` 실행, 또는 `$`를 치면 열한 이름이 목록에 보여야 함.
 
 ## 시험 프롬프트
 
@@ -82,13 +83,18 @@ $impl-steps SPEC.md 기준으로 PLAN.md 단계 표만 만들어줘.
 
 수동 전용 확인: `이거 구현하지 말고 방향만 얘기해 보자`처럼 `$` 없이 말했을 때 discuss가 저절로 불리지 않아야 한다 (AGENTS.md 규칙으로만 답함).
 
-## 두 세션으로 쓰는 법 (Codex 응답이 느릴 때)
+## 두 세션으로 쓰는 법 (웹 사이트 + 핵심 계산 과제)
 
-1. 터미널(Codex 세션)을 두 개 연다.
-2. 각 세션 첫 프롬프트에 역할을 정한다: "이 세션은 확정 세션이야" / "이 세션은 구현 세션이야".
-3. 확정 세션은 담당자 인터뷰 · SPEC.md · PLAN.md · docs/architecture.svg(`$requirements-interview`, `$impl-steps 갱신`, `$arch-diagram`), 구현 세션은 코드와 검증(`$follow-plan`).
-4. 소통은 파일로만: SPEC.md(확정 → 구현, 구현 세션은 단위마다 다시 읽음)와 notes/progress.md(구현 → 확정, 맨 아래에 추가만).
-5. 마무리는 두 세션을 멈춘 뒤 한쪽에서만 `$finalize`.
+핵심 계산(최적화 · 배정 · 추천 등)이 없는 과제면 한 세션으로 한다.
+
+1. 한 세션에서 인터뷰와 SPEC.md를 끝낸다(`$requirements-interview`): 엔진 입출력 계약 · 절대 조건 · 비교 기준(우선순위) · 지표. 계약의 출력 예시를 `engine/stub_output.json`으로 둔다.
+2. 터미널(Codex 세션)을 하나 더 열고 첫 프롬프트에 역할을 정한다: "이 세션은 화면 세션이야" / "이 세션은 엔진 세션이야".
+3. 화면 세션: engine/ 밖의 화면 · 로그인 · 사이트를 stub으로 만든다(`$impl-steps` → `$follow-plan`). PLAN.md · docs/architecture.svg도 여기서. 계획에 "stub으로 화면 완성 → 엔진 v1 이식 → 최종 엔진 이식"이 들어간다.
+4. 엔진 세션: engine/만, `$optimize-loop` (evaluate.py → 단순 기준안 "엔진 v1 준비" → 한 번에 하나씩 개선).
+5. 소통은 파일로만: SPEC.md(계약, 엔진 세션만 바꿈) · notes/progress.md · DECISIONS.md(맨 아래에 추가만, 줄 앞에 [화면] / [엔진]). 이식은 화면 세션이 "엔진 vN 준비" 줄을 보고 한다.
+6. 마무리는 두 세션을 멈춘 뒤 한쪽에서만 `$finalize`.
+
+당일 흐름: 인터뷰 → SPEC(계약 · 조건 · 우선순위 · 지표) → 화면: `$impl-steps` → `$follow-plan` / 엔진: `$optimize-loop` → 이식 → `$finalize`
 
 ## 쓰는 순서 (시험 당일)
 

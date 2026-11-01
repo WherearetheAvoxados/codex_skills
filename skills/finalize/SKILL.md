@@ -16,6 +16,7 @@ disable-model-invocation: true
 ## 0. 먼저 묻기 (두 세션으로 나눴을 때)
 - "두 세션 모두 작업을 멈췄나요?"를 묻고, 답을 받은 뒤 **한쪽 세션에서만** 이 스킬을 실행한다. 다른 세션은 그동안 파일을 고치지 않는다.
 - notes/progress.md 맨 아래까지 읽어 PLAN.md · docs/architecture.svg에 반영 안 된 줄이 있으면 먼저 반영한다($impl-steps).
+- 엔진 세션이 있었으면: 마지막 "[엔진] … 준비" 버전이 이식됐는지 보고, `engine/evaluate.py`를 한 번 돌려 위반 0과 지표 숫자를 SOLUTION.md에 옮긴다.
 
 ## 1. 지금 상태 점검
 - `git status --short`로 바뀐 파일을 본다. PLAN.md의 상태 표와 실제 코드가 맞는지 본다.
