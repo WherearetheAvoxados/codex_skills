@@ -16,7 +16,7 @@ skills/discuss/SKILL.md                 파일 안 바꾸고 방향만 논의 (�
 skills/discuss-with-research/SKILL.md   문서 · 사례를 찾아보며 논의 (설치 · 내려받기 없음)
 skills/explain-cause/SKILL.md           원인 · 결정을 쉬운 말과 실제 예로 다시 설명 (서술형 대비)
 skills/context-recall/SKILL.md          압축 · 새 세션 뒤 SPEC · PLAN · DECISIONS · git으로 상태 정리
-skills/ui-kit/                          화면 틀: base.css · report.html(보고서형) · tool.html(입력→결과형) · parts.html(견본) · reference.html(원본, 읽지 않음)
+skills/ui-kit/                          화면 틀: base.css · app-shell · login · list-detail · form-page · report · tool(.html) · parts.html(견본) · reference.html(원본, 읽지 않음)
 ```
 
 스킬은 Agent Skills 형식(`SKILL.md` + `name` · `description` 머리말)이라 Codex와 Claude Code 모두 읽는다. hooks · MCP · 플러그인 · 외부 인증 없음.
@@ -58,8 +58,10 @@ mkdir -p ~/.agents/skills && cp -R /tmp/kit/skills/* ~/.agents/skills/    # 사�
 
 ## 화면 틀 쓰는 법 (ui-kit)
 
-1. 보고서형(표 · 요약 · 필터)은 `report.html`, 입력 → 결과형은 `tool.html`을 `base.css`와 함께 프로젝트 화면 폴더로 복사한다 (`$ui-kit`, 원본은 `~/.codex/skills/ui-kit/`).
-2. `<link rel="stylesheet" href="base.css">`는 그대로 두고 base.css 부품만 쓴다. 새 디자인 시스템 · 프레임워크 · 웹폰트 · CDN 없이.
+1. SPEC의 화면마다 틀 하나를 골라(PLAN.md에 화면 → 틀 표) `base.css`와 함께 프로젝트 화면 폴더로 복사한다 (`$ui-kit`, 원본은 `~/.codex/skills/ui-kit/`).
+   틀: `app-shell`(왼쪽 메뉴 + 역할 바 + 본문, 공통 뼈대) · `login`(가운데 카드) · `list-detail`(목록 + 상세) · `form-page`(2열 폼) · `report`(요약 · 필터 · 표) · `tool`(입력 → 결과). report부터는 모두 app-shell 안에 들어 있다.
+   뼈대(.app · 격자)는 두고 `<!-- 자리: … -->`만 채운다. 맞는 틀이 없으면 `.grid-2/3/auto` · `.main-aside` · `.list-detail` · `.form-grid` · `.row`를 조합한다.
+2. `<link rel="stylesheet" href="base.css">`는 그대로 두고 base.css 부품만 쓴다. 새 디자인 시스템 · 프레임워크 · 웹폰트 · CDN 없이. 동작은 vanilla JS(`web/app.js`), 서버는 Python 표준 라이브러리가 기본이고 Next.js는 과제가 지정했거나 화면이 많을 때만.
 3. `<!-- 선택: SPEC에 없으면 지울 것 -->`이 붙은 부품은 SPEC에 없으면 지운다. 제출 때 SOLUTION.md에 "화면 기본 틀은 공개 키트에서 가져옴" 한 줄.
 
 ## 읽히는지 확인

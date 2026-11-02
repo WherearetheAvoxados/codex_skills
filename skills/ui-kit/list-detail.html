@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>목록 제목 자리 · 서비스 이름 자리</title>
+<link rel="stylesheet" href="base.css">
+</head>
+<body>
+<!-- app-shell 뼈대 안의 목록 + 상세형. .page 안 내용만 바꾸고 .app 구조는 그대로 둔다. -->
+<div class="app">
+
+<nav class="app-nav" aria-label="메뉴">
+  <div class="app-brand">서비스 이름 자리</div>
+  <ul class="app-menu">
+    <!-- 자리: 메뉴 항목 반복 (지금 화면에 aria-current="page") -->
+    <li><a href="#">메뉴 A 자리</a></li>
+    <li><a href="#" aria-current="page">메뉴 B 자리</a></li>
+    <li><a href="#">메뉴 C 자리</a></li>
+    <li><a href="#">메뉴 D 자리</a></li>
+  </ul>
+</nav>
+
+<div class="app-main">
+  <header class="app-bar">
+    <!-- 선택: SPEC에 없으면 지울 것 (현재 위치) -->
+    <span class="sub">서비스 이름 자리 · 메뉴 B 자리</span>
+    <div class="role-bar">
+      <!-- 선택: SPEC에 없으면 지울 것 (역할 전환; 역할이 하나면 .seg를 지운다) -->
+      <span class="hint">역할</span>
+      <div class="seg" role="group" aria-label="역할 전환"><button type="button" aria-pressed="true">역할 A</button><button type="button" aria-pressed="false">역할 B</button></div>
+      <span class="role-user">사용자 이름 자리</span>
+      <a href="login.html">로그아웃</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <header class="topbar">
+      <div>
+        <h1 class="page-title">목록 제목 자리</h1>
+        <span class="sub">행을 고르면 오른쪽에 상세가 보입니다</span>
+      </div>
+      <!-- 선택: SPEC에 없으면 지울 것 (새로 등록) -->
+      <div class="actions"><button class="btn btn-primary" type="button">새로 등록</button></div>
+    </header>
+
+    <div class="list-detail">
+      <section class="card">
+        <div class="card-head"><h3 class="section-title">목록</h3><span class="count num">24건</span></div>
+        <!-- 선택: SPEC에 없으면 지울 것 (검색) -->
+        <label class="field"><span class="field-label">검색</span><input type="search" placeholder="이름 또는 번호"></label>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>이름</th><th>상태</th><th class="num">날짜</th></tr></thead>
+            <tbody>
+              <!-- 자리: 목록 행 반복 (고른 행에 class="is-selected", 행 클릭 → 상세 채우기는 과제 코드에서) -->
+              <tr><td class="name">항목 01</td><td><span class="badge is-crit">! CRIT 위험</span></td><td class="num is-sub">10.30</td></tr>
+              <tr class="is-selected"><td class="name">항목 02</td><td><span class="badge is-ok">● OK 정상</span></td><td class="num is-sub">10.29</td></tr>
+              <tr><td class="name">항목 03</td><td><span class="badge is-warn">▲ WARN 경고</span></td><td class="num is-sub">10.29</td></tr>
+              <tr><td class="name">항목 04</td><td><span class="badge is-info">i INFO 정보</span></td><td class="num is-sub">10.28</td></tr>
+              <tr><td class="name">항목 05</td><td><span class="badge is-ok">● OK 정상</span></td><td class="num is-sub">10.27</td></tr>
+              <tr><td class="name">항목 06</td><td><span class="badge is-none">– N/A 미분류</span></td><td class="num is-sub">10.27</td></tr>
+              <tr><td class="name">항목 07</td><td><span class="badge is-ok">● OK 정상</span></td><td class="num is-sub">10.26</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 자리: 상세 (고른 행이 없으면 이 카드 대신 .state.is-empty "왼쪽에서 항목을 고르세요") -->
+      <section class="card">
+        <div class="card-head"><h3 class="section-title">항목 02</h3><span class="badge is-ok">● OK 정상</span></div>
+        <dl class="kv">
+          <dt>번호</dt><dd><span class="num">A-0002</span></dd>
+          <dt>구분</dt><dd>항목 A</dd>
+          <dt>담당</dt><dd>담당자 자리</dd>
+          <dt>등록일</dt><dd><span class="num">2026.10.29 14:20</span></dd>
+          <dt>값</dt><dd><span class="num">12.61</span></dd>
+          <dt>메모</dt><dd>메모 자리 — 두세 문장으로 상태를 설명합니다.</dd>
+        </dl>
+        <!-- 자리: 작업 버튼 (SPEC에 있는 동작만) -->
+        <div class="row between">
+          <div class="row"><button class="btn btn-primary" type="button">수정</button><button class="btn btn-outline" type="button">작업 B 자리</button></div>
+          <!-- 선택: SPEC에 없으면 지울 것 (삭제; 누르면 .dialog로 확인) -->
+          <button class="btn btn-danger" type="button">삭제</button>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+</div>
+</body>
+</html>

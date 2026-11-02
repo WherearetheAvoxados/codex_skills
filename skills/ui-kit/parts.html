@@ -10,8 +10,8 @@
 <main class="page">
 
 <header class="topbar">
-  <div><h1 class="page-title">UI 부품 견본</h1><span class="sub">base.css 부품 · 참고용 (과제 화면은 report.html · tool.html에서 시작)</span></div>
-  <span class="count num">BASE.CSS V0.3</span>
+  <div><h1 class="page-title">UI 부품 견본</h1><span class="sub">base.css 부품 · 참고용 (과제 화면은 app-shell · login · list-detail · form-page · report · tool 틀에서 시작)</span></div>
+  <span class="count num">BASE.CSS V0.4</span>
 </header>
 
 <h2 class="section-title">기초</h2>
@@ -188,6 +188,72 @@
       <details class="disclosure" open><summary>펼치는 항목 제목 자리 1</summary><div>펼친 본문 자리입니다. 두세 문장으로 설명하고 필요하면 링크를 덧붙입니다.</div></details>
       <details class="disclosure"><summary>펼치는 항목 제목 자리 2</summary><div>펼친 본문 자리입니다. 계산 방식이나 제외 조건을 간단히 적습니다.</div></details>
       <details class="disclosure"><summary>펼치는 항목 제목 자리 3</summary><div>펼친 본문 자리입니다. 담당 부서나 문의 채널을 적습니다.</div></details>
+    </div>
+  </div>
+</div>
+
+<h2 class="section-title">레이아웃</h2>
+<div class="parts-grid">
+  <div class="card wide">
+    <div class="card-head"><h3 class="section-title">앱 뼈대 · 역할 바</h3><code class="code">.app .app-nav .app-main .app-bar .role-bar</code></div>
+    <span class="hint">왼쪽 메뉴 220px + 오른쪽(상단 바 + 본문 .page). 900px 아래에선 메뉴가 위로. 전체 모양은 app-shell.html</span>
+    <div class="app-bar">
+      <span class="sub">서비스 이름 · 메뉴 A</span>
+      <div class="role-bar"><span class="hint">역할</span><div class="seg" role="group" aria-label="역할 전환"><button type="button" aria-pressed="true">역할 A</button><button type="button" aria-pressed="false">역할 B</button></div><span class="role-user">사용자 이름</span><a href="#">로그아웃</a></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">메뉴</h3><code class="code">.app-menu</code></div>
+    <ul class="app-menu"><li><a href="#" aria-current="page">현재 메뉴</a></li><li><a href="#">메뉴 B</a></li><li><a href="#">메뉴 C</a></li></ul>
+  </div>
+
+  <div class="card wide">
+    <div class="card-head"><h3 class="section-title">같은 폭 2 · 3열</h3><code class="code">.grid-2 · .grid-3</code></div>
+    <div class="grid-2"><div class="state is-empty"><span class="state-title">1열</span></div><div class="state is-empty"><span class="state-title">2열</span></div></div>
+    <div class="grid-3"><div class="state is-empty"><span class="state-title">1열</span></div><div class="state is-empty"><span class="state-title">2열</span></div><div class="state is-empty"><span class="state-title">3열</span></div></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">가로 배치</h3><code class="code">.row · .row.between</code></div>
+    <div class="row"><span class="badge is-ok">● OK 정상</span><span class="badge is-warn">▲ WARN 경고</span><button class="btn btn-outline btn-sm" type="button">작업</button></div>
+    <div class="row between"><span class="count">왼쪽 끝</span><button class="btn btn-primary btn-sm" type="button">오른쪽 끝</button></div>
+  </div>
+
+  <div class="card wide">
+    <div class="card-head"><h3 class="section-title">카드 격자 (자동 열)</h3><code class="code">.grid-auto</code></div>
+    <span class="hint">카드 최소 280px, 폭에 맞춰 열 수가 바뀐다</span>
+    <div class="grid-auto">
+      <div class="stat-card"><span class="stat-label">카드 1</span><span class="stat-num">12</span></div>
+      <div class="stat-card"><span class="stat-label">카드 2</span><span class="stat-num">34</span></div>
+      <div class="stat-card"><span class="stat-label">카드 3</span><span class="stat-num">56</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">본문 + 보조</h3><code class="code">.main-aside</code></div>
+    <span class="hint">본문 1fr + 오른쪽 320px. 실제 화면은 app-shell.html</span>
+  </div>
+
+  <div class="card wide">
+    <div class="card-head"><h3 class="section-title">목록 + 상세</h3><code class="code">.list-detail · tr.is-selected</code></div>
+    <span class="hint">왼쪽 목록 380px + 오른쪽 상세. 고른 행은 .is-selected. 실제 화면은 list-detail.html</span>
+    <table class="table">
+      <tbody>
+        <tr><td class="name">항목 01</td><td><span class="badge is-crit">! CRIT 위험</span></td></tr>
+        <tr class="is-selected"><td class="name">항목 02 (선택)</td><td><span class="badge is-ok">● OK 정상</span></td></tr>
+        <tr><td class="name">항목 03</td><td><span class="badge is-warn">▲ WARN 경고</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <div class="card-head"><h3 class="section-title">칸 오류</h3><code class="code">.field.is-error .field-error</code></div>
+    <label class="field is-error"><span class="field-label">이름</span><input type="text" aria-invalid="true"><span class="field-error">이름을 입력하세요</span></label>
+  </div>
+
+  <div class="card wide">
+    <div class="card-head"><h3 class="section-title">2열 폼</h3><code class="code">.form-grid · .span-2</code></div>
+    <div class="form-grid">
+      <label class="field"><span class="field-label">칸 1</span><input type="text"></label>
+      <label class="field"><span class="field-label">칸 2</span><input type="date"></label>
+      <label class="field span-2"><span class="field-label">한 줄 전체</span><textarea rows="2"></textarea></label>
     </div>
   </div>
 </div>

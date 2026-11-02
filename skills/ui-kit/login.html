@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>로그인 · 서비스 이름 자리</title>
+<link rel="stylesheet" href="base.css">
+</head>
+<body>
+<!-- 로그인 화면 틀. 인증 로직 없음: 방식(화면 전환 / 데모 계정 / 실제 인증)은 담당자에게 확인한 뒤 과제 코드에서 붙인다. -->
+<main class="center-page">
+  <form class="card" method="post" action="#">
+    <div>
+      <h1 class="page-title">서비스 이름 자리</h1>
+      <span class="sub">계정으로 로그인하세요</span>
+    </div>
+
+    <label class="field"><span class="field-label">아이디</span><input type="text" name="username" autocomplete="username" required></label>
+    <!-- 상태: 로그인 실패일 때만 .is-error + .field-error -->
+    <label class="field is-error"><span class="field-label">비밀번호</span><input type="password" name="password" autocomplete="current-password" required aria-invalid="true" aria-describedby="e-login"><span class="field-error" id="e-login">아이디 또는 비밀번호가 맞지 않습니다</span></label>
+
+    <!-- 선택: SPEC에 없으면 지울 것 (역할 선택; 계정에 역할이 정해져 있으면 지운다) -->
+    <fieldset class="checks">
+      <legend>역할</legend>
+      <label><input type="radio" name="role" value="a" checked>역할 A</label>
+      <label><input type="radio" name="role" value="b">역할 B</label>
+    </fieldset>
+
+    <button class="btn btn-primary" type="submit">로그인</button>
+    <!-- 선택: SPEC에 없으면 지울 것 (데모 계정 안내) -->
+    <span class="hint">데모 계정 안내 자리</span>
+  </form>
+</main>
+</body>
+</html>

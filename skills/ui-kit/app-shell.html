@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>화면 이름 자리 · 서비스 이름 자리</title>
+<link rel="stylesheet" href="base.css">
+</head>
+<body>
+<!-- 여러 페이지 사이트의 공통 뼈대. 화면마다 이 파일을 복사하고 .page 안 "자리: 본문"만 바꾼다. .app · .app-nav · .app-main · .app-bar 구조는 그대로 둔다. -->
+<div class="app">
+
+<nav class="app-nav" aria-label="메뉴">
+  <div class="app-brand">서비스 이름 자리</div>
+  <ul class="app-menu">
+    <!-- 자리: 메뉴 항목 반복 (지금 화면에 aria-current="page") -->
+    <li><a href="#" aria-current="page">메뉴 A 자리</a></li>
+    <li><a href="#">메뉴 B 자리</a></li>
+    <li><a href="#">메뉴 C 자리</a></li>
+    <li><a href="#">메뉴 D 자리</a></li>
+  </ul>
+</nav>
+
+<div class="app-main">
+  <header class="app-bar">
+    <!-- 선택: SPEC에 없으면 지울 것 (현재 위치) -->
+    <span class="sub">서비스 이름 자리 · 메뉴 A 자리</span>
+    <div class="role-bar">
+      <!-- 선택: SPEC에 없으면 지울 것 (역할 전환; 역할이 하나면 .seg를 지운다) -->
+      <span class="hint">역할</span>
+      <div class="seg" role="group" aria-label="역할 전환"><button type="button" aria-pressed="true">역할 A</button><button type="button" aria-pressed="false">역할 B</button></div>
+      <span class="role-user">사용자 이름 자리</span>
+      <a href="login.html">로그아웃</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <header class="topbar">
+      <div>
+        <h1 class="page-title">화면 제목 자리</h1>
+        <span class="sub">화면 설명 자리</span>
+      </div>
+      <!-- 선택: SPEC에 없으면 지울 것 (화면 동작 버튼) -->
+      <div class="actions"><button class="btn btn-primary" type="button">주요 동작 자리</button></div>
+    </header>
+
+    <!-- 자리: 본문 (맞는 틀이 있으면 그 틀을 쓰고, 없으면 .grid-2 · .grid-3 · .grid-auto · .main-aside · .list-detail · .form-grid · .row를 조합한다) -->
+    <div class="main-aside">
+      <section class="card">
+        <div class="card-head"><h3 class="section-title">본문 영역 자리</h3></div>
+        <div class="state is-empty"><span class="state-title">본문 내용 자리</span><span class="state-sub">표 · 카드 격자 · 폼 등을 이 자리에 넣는다</span></div>
+      </section>
+      <!-- 선택: SPEC에 없으면 지울 것 (오른쪽 보조 영역; 지우면 .main-aside 대신 본문만 남긴다) -->
+      <aside class="card">
+        <div class="card-head"><h3 class="section-title">보조 영역 자리</h3></div>
+        <dl class="kv"><dt>항목 1</dt><dd>값 자리</dd><dt>항목 2</dt><dd>값 자리</dd><dt>항목 3</dt><dd>값 자리</dd></dl>
+      </aside>
+    </div>
+  </main>
+</div>
+
+</div>
+</body>
+</html>
