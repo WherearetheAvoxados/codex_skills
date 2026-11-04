@@ -9,7 +9,7 @@ skills/requirements-interview/SKILL.md  담당자 질문 순서 → SPEC.md     
   └ scripts/profile_csv.py               데이터 점검: 빈 값 · 고유값 · 표기 변형 · 시간 형식 · 정렬 · 중복 (표준 라이브러리만)
 skills/impl-steps/SKILL.md              SPEC에서 PLAN.md 단계 표 만들기 · 상태 갱신, 같은 표를 docs/architecture.svg 오른쪽에        (이하 수동 $이름 만)
 skills/follow-plan/SKILL.md             PLAN 단계를 하나씩 끝까지 구현 · 검증 (땜질이면 멈추고 묻기)
-skills/optimize-loop/SKILL.md           엔진 세션: 평가 스크립트 → 단순 기준안 → 한 번에 하나씩 개선 (위반 0 · 우선순위 비교)
+skills/optimize-loop/SKILL.md           엔진 세션: 평가 스크립트 → 단순 기준안 → 알고리즘 고르기(웹 검색) → 한 번에 하나씩 개선 (위반 0 · 우선순위 비교)
 skills/finalize/SKILL.md                제출 전 마무리: 상태 점검 · SPEC 기준 점검 · DECISIONS 정리 · SOLUTION.md
 skills/arch-diagram/SKILL.md            설계 구조도 SVG (docs/architecture.svg 왼쪽)
 skills/discuss/SKILL.md                 파일 안 바꾸고 방향만 논의 (선택지 · 추천)
@@ -92,7 +92,7 @@ $impl-steps SPEC.md 기준으로 PLAN.md 단계 표만 만들어줘.
 1. 한 세션에서 인터뷰와 SPEC.md를 끝낸다(`$requirements-interview`): 엔진 입출력 계약 · 절대 조건 · 비교 기준(우선순위) · 지표. 계약의 출력 예시를 `engine/stub_output.json`으로 둔다.
 2. 터미널(Codex 세션)을 하나 더 열고 첫 프롬프트에 역할을 정한다: "이 세션은 화면 세션이야" / "이 세션은 엔진 세션이야".
 3. 화면 세션: engine/ 밖의 화면 · 로그인 · 사이트를 stub으로 만든다(`$impl-steps` → `$follow-plan`). PLAN.md · docs/architecture.svg도 여기서. 계획에 "stub으로 화면 완성 → 엔진 v1 이식 → 최종 엔진 이식"이 들어간다.
-4. 엔진 세션: engine/만, `$optimize-loop` (evaluate.py → 단순 기준안 "엔진 v1 준비" → 한 번에 하나씩 개선).
+4. 엔진 세션: engine/만, `$optimize-loop` (evaluate.py → 단순 기준안 "엔진 v1 준비" → 알고리즘 후보표에서 내가 고름 → 한 번에 하나씩 개선).
 5. 소통은 파일로만: SPEC.md(계약, 엔진 세션만 바꿈) · notes/progress.md · DECISIONS.md(맨 아래에 추가만, 줄 앞에 [화면] / [엔진]). 이식은 화면 세션이 "엔진 vN 준비" 줄을 보고 한다.
 6. 마무리는 두 세션을 멈춘 뒤 한쪽에서만 `$finalize`.
 
